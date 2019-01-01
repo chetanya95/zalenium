@@ -1,6 +1,7 @@
 package de.zalando.ep.zalenium.servlet;
 
 import java.io.IOException;
+
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
@@ -10,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.openqa.grid.internal.GridRegistry;
 import org.openqa.grid.web.servlet.RegistryBasedServlet;
+
+import de.zalando.ep.zalenium.service.VideosDetails;
 
 public class WindowsDashboardServlet extends RegistryBasedServlet{
 	
@@ -27,6 +30,7 @@ public class WindowsDashboardServlet extends RegistryBasedServlet{
 	
 
 	public void init() throws ServletException {
+		System.out.println("Servlet " + this.getServletName() + " has started");
 		// Do required initialization
 		
 	}
@@ -52,17 +56,37 @@ public class WindowsDashboardServlet extends RegistryBasedServlet{
 	
 	private void process(HttpServletRequest request, HttpServletResponse response) 
 			throws IOException{
-		// Set response content type
-		message = "Hello World";
+		String requestURL = request.getRequestURL().toString();
 		
-		response.setContentType("text/html");
+		requestURL = requestURL.substring(0, requestURL.indexOf("windows-dashboard")) + "video";
 		
-		// Actual logic goes here.
-		PrintWriter out = response.getWriter();
-		out.println("<h1>" + message + "</h1>");
+		//System.out.println(requestURL);
+		
+		response.getWriter().append("<!DOCTYPE html>\r\n" + 
+				"<html>\r\n" + 
+				"<head>\r\n" + 
+				"	<meta http-equiv=\"Content-Type\" content=\"text/html; charset=ISO-8859-1\">\r\n" + 
+				"	<title>Zalenium - Windows Dashboard</title>\r\n" + 
+				"</head>\r\n" + 
+				"<body>\r\n" + 
+				"	<h1 style=\"background-color:yellow; font-size:200%\"><b>Zalenium - Windows Dashboard</b></h1>\r\n" + 
+				"	<div align=\"center\">");
+		VideosDetails videosDetails = new VideosDetails();
+		
+		for(int i=0; i<videosDetails.getVideosCount(); i++) {
+			response.getWriter().append("	    <video id=\"video\" controls width=\"560\" >\r\n" + 
+					"	        <source id=\"video_src\" src=\"" + requestURL + "?name=" + videosDetails.getVideos().get(i) + "\" type=\"video/mp4\" />\r\n" + 
+					"	    </video> ");
+		}
+		
+		response.getWriter().append("	</div>\r\n" + 
+				"</body>\r\n" + 
+				"\r\n" + 
+				"</html>");
 	}
 
 	public void destroy() {
+		System.out.println("Servlet " + this.getServletName() + " has stopped");
 		// do nothing.
 	}
 }

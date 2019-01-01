@@ -24,6 +24,7 @@ de\zalando\ep\zalenium\matcher\ZaleniumCapabilityMatcher.class
 de\zalando\ep\zalenium\util\MockedRequestHandler.class
 de\zalando\ep\zalenium\matcher\DockerSeleniumCapabilityMatcher.class
 de\zalando\ep\zalenium\registry\ZaleniumRegistry$Matcher.class
+de\zalando\ep\zalenium\service\VideosDetails.class
 de\zalando\ep\zalenium\servlet\WindowsDashboardServlet.class
 de\zalando\ep\zalenium\container\kubernetes\KubernetesContainerClient$1.class
 de\zalando\ep\zalenium\dashboard\remote\RemoteDriverLogDashboard.class
@@ -61,5 +62,6 @@ de\zalando\ep\zalenium\proxy\ShutdownType.class
 de\zalando\ep\zalenium\container\DockerContainerClient.class
 de\zalando\ep\zalenium\servlet\LivePreviewServlet.class
 de\zalando\ep\zalenium\servlet\renderer\TemplateRenderer.class
+de\zalando\ep\zalenium\servlet\VideoServlet.class
 de\zalando\ep\zalenium\dashboard\TestInformation.class
 de\zalando\ep\zalenium\proxy\DockeredSeleniumStarter.class

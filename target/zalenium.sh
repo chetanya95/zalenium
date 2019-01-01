@@ -5,7 +5,7 @@ SELENIUM_IMAGE_NAME=${SELENIUM_IMAGE_NAME:-"elgalu/selenium"}
 MAX_TEST_SESSIONS=${MAX_TEST_SESSIONS:-1}
 DESIRED_CONTAINERS=${DESIRED_CONTAINERS:-2}
 MAX_DOCKER_SELENIUM_CONTAINERS=${MAX_DOCKER_SELENIUM_CONTAINERS:-10}
-ZALENIUM_ARTIFACT="$(pwd)/zalenium-100-Snapshot.jar"
+ZALENIUM_ARTIFACT="$(pwd)/zalenium-101.jar"
 DEPRECATED_PARAMETERS=false
 SAUCE_LABS_ENABLED=${SAUCE_LABS_ENABLED:-false}
 BROWSER_STACK_ENABLED=${BROWSER_STACK_ENABLED:-false}
@@ -224,13 +224,13 @@ DockerTerminate()
             --data tid="$GA_TRACKING_ID"
             --data cid="$RANDOM_USER_GA_ID"
             --data an="zalenium"
-            --data av="zalenium-100-Snapshot.jar"
+            --data av="zalenium-101.jar"
             --data cd="$ZALENIUM_STOP_COMMAND"
             --data sc="end"
             --data ds="docker"
         )
 
-        if [[ "zalenium-100-Snapshot.jar" == *"SNAPSHOT"* ]]; then
+        if [[ "zalenium-101.jar" == *"SNAPSHOT"* ]]; then
             echo "Not sending info to GA since this is a SNAPSHOT version"
         else
             curl ${GA_ENDPOINT} "${args[@]}" \
@@ -360,7 +360,7 @@ StartUp()
     export ZALENIUM_GA_TRACKING_ID=${GA_TRACKING_ID}
     export ZALENIUM_GA_ENDPOINT=${GA_ENDPOINT}
     export ZALENIUM_GA_ANONYMOUS_CLIENT_ID=${RANDOM_USER_GA_ID}
-    if [[ "zalenium-100-Snapshot.jar" != *"SNAPSHOT"* ]]; then
+    if [[ "zalenium-101.jar" != *"SNAPSHOT"* ]]; then
         export ZALENIUM_SEND_ANONYMOUS_USAGE_INFO=${SEND_ANONYMOUS_USAGE_INFO}
     fi
 
@@ -560,7 +560,7 @@ StartUp()
             --data tid="$GA_TRACKING_ID"
             --data cid="$RANDOM_USER_GA_ID"
             --data an="zalenium"
-            --data av="zalenium-100-Snapshot.jar"
+            --data av="zalenium-101.jar"
             --data cd="$ZALENIUM_START_COMMAND"
             --data sc="start"
             --data ds="docker"
@@ -574,7 +574,7 @@ StartUp()
             --data cm2="$TOTAL_MEMORY"
         )
 
-        if [[ "zalenium-100-Snapshot.jar" == *"SNAPSHOT"* ]]; then
+        if [[ "zalenium-101.jar" == *"SNAPSHOT"* ]]; then
             echo "Not sending info to GA since this is a SNAPSHOT version"
         else
             curl ${GA_ENDPOINT} \

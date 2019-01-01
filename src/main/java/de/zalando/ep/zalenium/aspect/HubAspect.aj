@@ -26,6 +26,7 @@ import io.prometheus.client.exporter.MetricsServlet;
 import io.prometheus.client.filter.MetricsFilter;
 import io.prometheus.client.hotspot.DefaultExports;
 import io.prometheus.client.jetty.JettyStatisticsCollector;
+import de.zalando.ep.zalenium.servlet.VideoServlet;
 
 import static de.zalando.ep.zalenium.util.ZaleniumConfiguration.ZALENIUM_RUNNING_LOCALLY;
 
@@ -88,6 +89,7 @@ privileged public aspect HubAspect {
         handler.addServlet(DashboardInformationServlet.class, "/dashboard/information");
         handler.addServlet(VncAuthenticationServlet.class, "/vnc/auth");
         
-        handler.addServlet(WindowsDashboardServlet.class, "/windows-dashboard");
+        handler.addServlet(VideoServlet.class, "/video/*");
+        handler.addServlet(WindowsDashboardServlet.class, "/windows-dashboard/*");
     }
 }

@@ -49,10 +49,12 @@ C:\Users\chetanya.goyal\git\zalenium-master\src\main\java\de\zalando\ep\zalenium
 C:\Users\chetanya.goyal\git\zalenium-master\src\main\java\de\zalando\ep\zalenium\proxy\SessionRequestFilter.java
 C:\Users\chetanya.goyal\git\zalenium-master\src\main\java\de\zalando\ep\zalenium\proxy\TestingBotRemoteProxy.java
 C:\Users\chetanya.goyal\git\zalenium-master\src\main\java\de\zalando\ep\zalenium\registry\ZaleniumRegistry.java
+C:\Users\chetanya.goyal\git\zalenium-master\src\main\java\de\zalando\ep\zalenium\service\VideosDetails.java
 C:\Users\chetanya.goyal\git\zalenium-master\src\main\java\de\zalando\ep\zalenium\servlet\LivePreviewServlet.java
 C:\Users\chetanya.goyal\git\zalenium-master\src\main\java\de\zalando\ep\zalenium\servlet\renderer\CloudProxyHtmlRenderer.java
 C:\Users\chetanya.goyal\git\zalenium-master\src\main\java\de\zalando\ep\zalenium\servlet\renderer\LiveNodeHtmlRenderer.java
 C:\Users\chetanya.goyal\git\zalenium-master\src\main\java\de\zalando\ep\zalenium\servlet\renderer\TemplateRenderer.java
+C:\Users\chetanya.goyal\git\zalenium-master\src\main\java\de\zalando\ep\zalenium\servlet\VideoServlet.java
 C:\Users\chetanya.goyal\git\zalenium-master\src\main\java\de\zalando\ep\zalenium\servlet\VncAuthenticationServlet.java
 C:\Users\chetanya.goyal\git\zalenium-master\src\main\java\de\zalando\ep\zalenium\servlet\WindowsDashboardServlet.java
 C:\Users\chetanya.goyal\git\zalenium-master\src\main\java\de\zalando\ep\zalenium\servlet\ZaleniumConsoleServlet.java
