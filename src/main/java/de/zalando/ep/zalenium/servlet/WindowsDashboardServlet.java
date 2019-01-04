@@ -56,11 +56,12 @@ public class WindowsDashboardServlet extends RegistryBasedServlet{
 	
 	private void process(HttpServletRequest request, HttpServletResponse response) 
 			throws IOException{
-		String requestURL = request.getRequestURL().toString();
 		
-		requestURL = requestURL.substring(0, requestURL.indexOf("windows-dashboard")) + "video";
+		String host = "http://" + request.getHeader("host");
+		String requestURI = request.getRequestURI();
+		String redirectURL = host + requestURI.substring(0, requestURI.indexOf("windows-dashboard")) + "video";
 		
-		//System.out.println(requestURL);
+		//System.out.println(redirectURL);
 		
 		response.getWriter().append("<!DOCTYPE html>\r\n" + 
 				"<html>\r\n" + 
@@ -69,13 +70,13 @@ public class WindowsDashboardServlet extends RegistryBasedServlet{
 				"	<title>Zalenium - Windows Dashboard</title>\r\n" + 
 				"</head>\r\n" + 
 				"<body>\r\n" + 
-				"	<h1 style=\"background-color:yellow; font-size:200%\"><b>Zalenium - Windows Dashboard</b></h1>\r\n" + 
+				"	<h1 style=\"background-color:blue; font-size:200%\"><b>Zalenium - Windows Dashboard</b></h1>\r\n" + 
 				"	<div align=\"center\">");
 		VideosDetails videosDetails = new VideosDetails();
 		
 		for(int i=0; i<videosDetails.getVideosCount(); i++) {
 			response.getWriter().append("	    <video id=\"video\" controls width=\"560\" >\r\n" + 
-					"	        <source id=\"video_src\" src=\"" + requestURL + "?name=" + videosDetails.getVideos().get(i) + "\" type=\"video/mp4\" />\r\n" + 
+					"	        <source id=\"video_src\" src=\"" + redirectURL + "?name=" + videosDetails.getVideos().get(i) + "\" type=\"video/mp4\" />\r\n" + 
 					"	    </video> ");
 		}
 		
