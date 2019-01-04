@@ -57,11 +57,11 @@ public class WindowsDashboardServlet extends RegistryBasedServlet{
 	private void process(HttpServletRequest request, HttpServletResponse response) 
 			throws IOException{
 		
-		String host = "http://" + request.getHeader("host");
-		String requestURI = request.getRequestURI();
-		String redirectURL = host + requestURI.substring(0, requestURI.indexOf("windows-dashboard")) + "video";
+//		String requestURL = request.getRequestURL().toString();
+//		String host = "http://" + request.getHeader("host");
 		
-		//System.out.println(redirectURL);
+		String requestURI = request.getRequestURI();
+		String redirectURI = requestURI.substring(0, requestURI.indexOf("windows-dashboard")) + "video";
 		
 		response.getWriter().append("<!DOCTYPE html>\r\n" + 
 				"<html>\r\n" + 
@@ -70,20 +70,25 @@ public class WindowsDashboardServlet extends RegistryBasedServlet{
 				"	<title>Zalenium - Windows Dashboard</title>\r\n" + 
 				"</head>\r\n" + 
 				"<body>\r\n" + 
-				"	<h1 style=\"background-color:blue; font-size:200%\"><b>Zalenium - Windows Dashboard</b></h1>\r\n" + 
+				"	<h1 style=\"background-color:green; font-size:200%\"><b>Zalenium - Windows Dashboard</b></h1>\r\n" + 
 				"	<div align=\"center\">");
 		VideosDetails videosDetails = new VideosDetails();
 		
 		for(int i=0; i<videosDetails.getVideosCount(); i++) {
 			response.getWriter().append("	    <video id=\"video\" controls width=\"560\" >\r\n" + 
-					"	        <source id=\"video_src\" src=\"" + redirectURL + "?name=" + videosDetails.getVideos().get(i) + "\" type=\"video/mp4\" />\r\n" + 
+					"	        <source id=\"video_src\" src=\"" + redirectURI + "?name=" + videosDetails.getVideos().get(i) + "\" type=\"video/mp4\" />\r\n" + 
 					"	    </video> ");
 		}
 		
 		response.getWriter().append("	</div>\r\n" + 
 				"</body>\r\n" + 
 				"\r\n" + 
-				"</html>");
+				"</html>\r\n" + 
+				"\r\n" + 
+				"<script>\r\n" + 
+				"	var video_src = document.getElementById(\"video_src\");\r\n" + 
+				"	video_src.src = window.location.hostname+ video_src.src;\r\n" + 
+				"</script>");
 	}
 
 	public void destroy() {

@@ -1,8 +1,2 @@
 Manifest-Version: 1.0
-Built-By: chetanya.goyal
-Build-Jdk: 1.8.0_161
-Created-By: Maven Integration for Eclipse
-
-Name: Build-Info
-Selenium-Version: 3.141.59
 
